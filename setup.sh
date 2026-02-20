@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 cd "$(dirname "$0")" || exit 1
 mkdir -p ./cf-admin
 sudo chown 65532:65532 ./cf-admin

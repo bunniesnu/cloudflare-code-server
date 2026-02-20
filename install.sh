@@ -52,4 +52,3 @@ sed -i '/^auth:/d' "$CONFIG"
     echo "auth: password"
     echo "hashed-password: $HASH"
 } >> "$CONFIG"
-sudo systemctl restart $SERVICE@$USER
