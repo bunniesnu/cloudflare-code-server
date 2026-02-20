@@ -7,31 +7,4 @@ services:
       - ./tunnel.json:/home/nonroot/.cloudflared/tunnel.json:ro
     restart: unless-stopped
     container_name: cloudflare-code-server
-    depends_on:
-      - code-server
-  code-server:
-    image: codercom/code-server:latest
-    user: "${c_UID}:${c_GID}"
-    container_name: code-server
-    restart: unless-stopped
-    ports:
-      - "127.0.0.1:8080:8080"
-    environment:
-      - HASHED_PASSWORD=${CODE_SERVER_HASHED_PASSWORD}
-    volumes:
-      - config:/home/coder/.config/code-server
-      - local:/home/coder/.local/share/code-server
-      - ~/workspaces:/home/coder/workspaces
-  init-permissions:
-    image: codercom/code-server:latest
-    user: "root:root"
-    volumes:
-      - config:/home/coder/.config/code-server
-      - local:/home/coder/.local/share/code-server
-      - ~/workspaces:/home/coder/workspaces
-    entrypoint: /bin/sh
-    command: -c "chown -R ${c_UID}:${c_GID} /home/coder/.config/code-server /home/coder/.local/share/code-server /home/coder/workspaces && chmod -R 700 /home/coder/.config/code-server /home/coder/.local/share/code-server /home/coder/workspaces"
-
-volumes:
-  config:
-  local:
+    network_mode: host

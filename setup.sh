@@ -9,4 +9,3 @@ docker run --rm -it -v ./cf-admin:/home/nonroot/.cloudflared cloudflare/cloudfla
 docker run --rm -it -v ./cf-admin:/home/nonroot/.cloudflared cloudflare/cloudflared:latest tunnel route dns code-server $DOMAIN
 sudo mv $(find ./cf-admin -type f -name "*.json") ./tunnel.json
 sudo rm -r ./cf-admin
-docker compose run --rm init-permissions
