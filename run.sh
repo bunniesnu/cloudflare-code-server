@@ -1,2 +1,2 @@
 #!/bin/bash
-docker compose up -d
+docker compose -f "$(dirname "$0")/docker-compose.yml" up -d

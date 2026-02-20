@@ -1,2 +1,2 @@
 #!/bin/bash
-docker compose down
+docker compose -f "$(dirname "$0")/docker-compose.yml" down
