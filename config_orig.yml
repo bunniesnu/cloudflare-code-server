@@ -3,5 +3,5 @@ credentials-file: /home/nonroot/.cloudflared/tunnel.json
 
 ingress:
         - hostname: code.example.com
-          service: http://code-server:8080
+          service: http://localhost:8080
         - service: http_status:404
